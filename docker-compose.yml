@@ -17,7 +17,7 @@ services:
     networks:
       - robot
   phpunit:
-    image: irobot
+    image: php:7.4-cli
     restart: unless-stopped
     volumes:
       - .:/var/www

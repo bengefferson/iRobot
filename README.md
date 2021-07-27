@@ -73,7 +73,7 @@ git clone git@github.com:bengefferson/iRobot.git
 - Bring up docker-composer using the command:
 
 ```plain
-docker-composer up -d
+docker-compose up -d
 ```
 
 - Update dependencies by running the following commands:
