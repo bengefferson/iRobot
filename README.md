@@ -58,55 +58,43 @@ REPORT
 Output: 3,3,NORTH
 ```
 
-## Deliverables
+## SetUp
 
-The source files, the test data and any test code (as well as explanations of how to run everything).
+- The host computer must have docker installed and running.
 
-## Expectations
+- Clone this repository:
 
-- There is no time limit for the test, you can take as long as you like, but a reasonable thing that most people do is to take a weekend to do it and send the solution back (i.e. turn it around within a week). If you need more time that's fine, just send us a quick message to let us know.
-- You're welcome to use whatever language you like, our tech stack is Ruby and Typescript so either one of those would be well regarded, but if you want to use a different language you're welcome to, just make sure we can easily run it (e.g. docker image). It's also worthwhile to make sure that the language you pick (if something other than Ruby or TS) is the best way to showcase your skills. Remember you will be pairing and extending this solution if you get to that part of the interview process.
-- The expectation is that you will create a command line application, please don't build a web ui/api etc.
-- You will use this coding test as a showcase of your skills as a developer, we should be able to look at this code and learn something about the way you think and about how you solve problems.
+    git clone git@github.com:bengefferson/iRobot.git
 
-We're not just looking for a minimal solution that would solve the problem. We're looking for:
+- cd to iRobot
 
-- production quality code
-- good OO and/or functional practices
-- a solid testing approach
-- well thought out naming
-- solid error handling
-- extensibility/maintainability/\*ility
-- good design from a software engineering perspective
-- separation of concerns, i.e. low coupling high cohesion
-- sensible breakdown of code into files/modules
-- use of best practices/idioms when it comes to language, testing etc.
-- appropriate use of tools/frameworks
-- performant code, i.e. memory/cpu efficient
-- etc
+- Bring up docker-composer using the command:
 
-Basically treat the coding test as if it's a larger problem, a little bit of over-engineering is likely a good idea.
+    docker-composer up -d
 
-## Common issues to avoid/think about
+- Update dependencies by running the following commands:
 
-- edge case inputs break the application
-- a large amount of input data will kill the application/cause it to be slow/cause it to be unresponsive
-- it requires a lot of effort to add new commands to the application
-- it requires a lot of effort to change the dimensions of the table
-- the application is not resilient to changes in the format of the input
-- the application is not resilient to changes in the source of the input
-- the application is not resilient to changes in the format of the output
-- elements of the design clearly violate SOLID (if OO)
-- the solution doesn't invert any dependencies
-- the solution violates DRY
+    docker-compose exec app composer update
+    docker-compose exec app composer -- dump
 
-## Self-assessment checklist
+## Running Simulation
 
-- Does the submission exhibit a good understand of OO and/or functional priniciples
-- Does the submission exhibit a solid testing approach (good mix of unit and integration tests etc.)
-- Does the submission exhibit well thought out variable/function/class naming
-- Does the submission exhibit a solid approach to error handling (can't easily get a stack trace on the command line)
-- Does the submission exhibit low coupling/high cohesion
-- Is the code easy to read/understand/extend
-- Would I be happy to have code of a similar standard in production
-- Would I be happy to inherit/modify/extend/maintain code of a similar standard
+- To run simulation from a file, create a file in the src/2D/commands directory
+
+- Run the following command:
+
+    docker-compose exec app php simulate.php name_of_file.txt
+    The example file in this directory can be run with -> docker-compose exec app php simulate.php commands.txt
+
+- To run commands directly from the commandline, use the same command as above wothout parsing the file name as follows:
+
+    docker-compose exec app php simulate.php
+
+## Running Test Suite
+
+- Run the test suite with either of these commands:
+
+    docker-compose exec phpunit --testdox tests  or
+    docker-compose run phpunit --testdox tests
+
+
