@@ -64,18 +64,25 @@ Output: 3,3,NORTH
 
 - Clone this repository:
 
-    git clone git@github.com:bengefferson/iRobot.git
+```plain
+git clone git@github.com:bengefferson/iRobot.git
+```
 
 - cd to iRobot
 
 - Bring up docker-composer using the command:
 
-    docker-composer up -d
+```plain
+docker-composer up -d
+```
 
 - Update dependencies by running the following commands:
 
-    docker-compose exec app composer update
-    docker-compose exec app composer -- dump
+```plain
+docker-compose exec app composer update
+docker-compose exec app composer -- dump
+```
+
 
 ## Running Simulation
 
@@ -83,18 +90,23 @@ Output: 3,3,NORTH
 
 - Run the following command:
 
-    docker-compose exec app php simulate.php name_of_file.txt
-    The example file in this directory can be run with -> docker-compose exec app php simulate.php commands.txt
+```plain
+docker-compose exec app php simulate.php name_of_file.txt
+The example file in this directory can be run with -> docker-compose exec app php simulate.php commands.txt
+```
+
 
 - To run commands directly from the commandline, use the same command as above wothout parsing the file name as follows:
 
-    docker-compose exec app php simulate.php
+```plain
+docker-compose exec app php simulate.php
+```
 
 ## Running Test Suite
 
-- Run the test suite with either of these commands:
+- Run the test suite with the following command:
 
-    docker-compose exec phpunit --testdox tests  or
-    docker-compose run phpunit --testdox tests
-
+```plain
+docker-compose run phpunit --testdox tests
+```
 
