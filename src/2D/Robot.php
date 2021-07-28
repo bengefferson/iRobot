@@ -33,11 +33,13 @@ class Robot implements RobotInterface
     // Executes the commands W.R.T the placed robot
     public function execute(array $command) :void
     {
+        $flag = False;
         if(count($command) == 2){
             $x = $command[1][0];
             $y = $command[1][1];
             $orientation = $command[1][2];
         }else{
+            $flag = True;
             $x = 0;
             $y = 0;
             $orientation = Config::ORIENTATION_NORTH;
@@ -47,6 +49,9 @@ class Robot implements RobotInterface
         }
         switch ($command[0]) {
             case Config::METHOD_PLACE:
+                if ($flag){
+                    echo "Warning: Default values for X,Y and Orientation used, because no valid argument was parsed.\n";
+                }
                 $this->place->placeOnBoard($x, $y, $orientation);
                 break;
 
