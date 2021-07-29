@@ -33,6 +33,9 @@ class Simulator implements SimulatorInterface
             $start = 0;
             while ($start < self::MAX_LINES_FOR_COMMANDLINE) {
                 $command = fgets($handle);
+                if (empty($command)){
+                    continue;
+                }
                 try{
                     $command = CleanInputService::parseCommand($command);
                     $this->robot->execute($command);
@@ -61,7 +64,7 @@ class Simulator implements SimulatorInterface
             fclose($handle);
             $contents = explode("\n",$contents);
             foreach($contents as $content){
-                if ($content == "```plain"){
+                if ($content == "```plain" or empty($content)){
                     continue;
                 }elseif($content == "```"){
                     break;
