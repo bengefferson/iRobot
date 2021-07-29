@@ -4,8 +4,8 @@ namespace iRobot;
 ini_set('include_path','/var/www/src/2D/commands');
 
 use Exception;
-use iRobot\TwoDimension\Robot;
 use iRobot\TwoDimension\Service\CleanInputService;
+use iRobot\Interfaces\RobotInterface;
 
 //This class handles the simulation of how the robot behaves when given a series of commands
 class Simulator
@@ -17,7 +17,7 @@ class Simulator
     const MAX_LINES_FOR_COMMANDLINE = 50;
 
 
-    public function __construct(Robot $robot)
+    public function __construct(RobotInterface $robot)
     {
         $this->robot = $robot;
     }

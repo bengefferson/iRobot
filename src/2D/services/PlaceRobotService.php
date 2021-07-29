@@ -4,11 +4,10 @@ namespace iRobot\TwoDimension\Service;
 
 use InvalidArgumentException;
 use LogicException;
-use iRobot\TwoDimension\Board\SquareBoard;
 use iRobot\TwoDimension\Service\RobotOrientationService;
 use iRobot\TwoDimension\Service\CleanInputService;
 use iRobot\TwoDimension\Config;
-
+use iRobot\TwoDimension\Interfaces\BoardInterface;
 
 //This service is used to place a robot at a particular coordinate and direction and get the robots position afterwards
 class PlaceRobotService
@@ -23,7 +22,7 @@ class PlaceRobotService
     //The Orientation
     protected $orientation;
 
-    public function __construct(SquareBoard $board)
+    public function __construct(BoardInterface $board)
     {
         $this->board = $board;
         $this->x = null;
