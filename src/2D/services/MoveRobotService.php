@@ -4,17 +4,18 @@ namespace iRobot\TwoDimension\Service;
 
 use InvalidArgumentException;
 use Exception;
-use iRobot\TwoDimension\Service\PlaceRobotService;
+use iRobot\TwoDimension\Interfaces\PlaceRobotInterface;
+use iRobot\TwoDimension\Interfaces\MoveRobotInterface;
 use iRobot\TwoDimension\Service\RobotOrientationService;
 use iRobot\TwoDimension\Config;
 
 //This service handles the movement and turning of the robot
-class MoveRobotService
+class MoveRobotService implements MoveRobotInterface
 {
     //Properties place and orientation
     protected $place;
 
-    public function __construct(PlaceRobotService $place)
+    public function __construct(PlaceRobotInterface $place)
     {
         $this->place = $place;
     }
@@ -28,19 +29,19 @@ class MoveRobotService
             // Determine new position based on current direction
             switch ($currentPosition['orientation']) {
                 case Config::ORIENTATION_NORTH:
-                    $currentPosition['y'] += $this->getMovementUnit();
+                    $currentPosition['y'] += Config::DEFAULT_MOVEMENT_UNIT;
                     break;
 
                 case Config::ORIENTATION_EAST:
-                    $currentPosition['x'] += $this->getMovementUnit();
+                    $currentPosition['x'] += Config::DEFAULT_MOVEMENT_UNIT;
                     break;
 
                 case Config::ORIENTATION_SOUTH:
-                    $currentPosition['y'] -= $this->getMovementUnit();
+                    $currentPosition['y'] -= Config::DEFAULT_MOVEMENT_UNIT;
                     break;
 
                 case Config::ORIENTATION_WEST:
-                    $currentPosition['x'] -= $this->getMovementUnit();
+                    $currentPosition['x'] -= Config::DEFAULT_MOVEMENT_UNIT;
                     break;
             }
             $newPosition = ['x'=>$currentPosition['x'], 'y'=>$currentPosition['y'], 'orientation'=>$currentPosition['orientation']];
@@ -59,9 +60,4 @@ class MoveRobotService
         $this->place->placeOnBoard($x,$y,$newOrientation);
     }
 
-    //Gets movement unit from the config class
-    protected function getMovementUnit() :int
-    {
-        return Config::DEFAULT_MOVEMENT_UNIT;
-    }
 }

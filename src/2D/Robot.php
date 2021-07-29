@@ -4,11 +4,10 @@ namespace iRobot\TwoDimension;
 
 use InvalidArgumentException;
 use Exception;
-use iRobot\TwoDimension\Service\PlaceRobotService;
-use iRobot\TwoDimension\Service\RobotOrientationService;
-use iRobot\TwoDimension\Service\MoveRobotService;
 use iRobot\TwoDimension\Config;
 use iRobot\Interfaces\RobotInterface;
+use iRobot\TwoDimension\Interfaces\PlaceRobotInterface;
+use iRobot\TwoDimension\Interfaces\MoveRobotInterface;
 
 //This class executes a command given to the robot
 class Robot implements RobotInterface
@@ -17,7 +16,7 @@ class Robot implements RobotInterface
     protected $move;
 
 
-    public function __construct(PlaceRobotService $place, MoveRobotService $move)
+    public function __construct(PlaceRobotInterface $place, MoveRobotInterface $move)
     {
         $this->place = $place;
         $this->move = $move;

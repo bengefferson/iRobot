@@ -59,13 +59,4 @@ class MoveRobotServiceTest extends TestCase
         $this->assertEquals($this->place->getPosition(),['x'=>0, 'y'=>6, 'orientation'=>'SOUTH']);
     }
 
-    public function testGetMovementUnitReturnsAnIntegerFromConfigClass()
-    {
-        $this->assertIsInt($this->move->getMovementUnit());
-    }
-
-
-
-
-
 }

@@ -8,9 +8,10 @@ use iRobot\TwoDimension\Service\RobotOrientationService;
 use iRobot\TwoDimension\Service\CleanInputService;
 use iRobot\TwoDimension\Config;
 use iRobot\TwoDimension\Interfaces\BoardInterface;
+use iRobot\TwoDimension\Interfaces\PlaceRobotInterface;
 
 //This service is used to place a robot at a particular coordinate and direction and get the robots position afterwards
-class PlaceRobotService
+class PlaceRobotService implements PlaceRobotInterface
 {
     //Properties used for placong the robot
 

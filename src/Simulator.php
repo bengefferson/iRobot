@@ -6,9 +6,10 @@ ini_set('include_path','/var/www/src/2D/commands');
 use Exception;
 use iRobot\TwoDimension\Service\CleanInputService;
 use iRobot\Interfaces\RobotInterface;
+use iRobot\Interfaces\SimulatorInterface;
 
 //This class handles the simulation of how the robot behaves when given a series of commands
-class Simulator
+class Simulator implements SimulatorInterface
 {
     protected $robot;
 
