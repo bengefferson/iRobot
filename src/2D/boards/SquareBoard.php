@@ -17,7 +17,7 @@ class SquareBoard implements BoardInterface
     }
 
     //Checks if the coordinates of the robot are with the board's bounds
-    public function withinBounds($x, $y) :bool
+    public function withinBounds(int $x, int $y) :bool
     {
         if(!((0 <= $x && $x <= $this->width) && (0 <= $y && $y <= $this->height))){
             throw new InvalidArgumentException(print_r("Coordinates $x and $y need to be within the board's boundaries- $this->width,$this->height.\n"));

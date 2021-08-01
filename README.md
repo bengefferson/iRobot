@@ -60,7 +60,7 @@ Output: 3,3,NORTH
 
 ## SetUp
 
-- The host computer must have docker installed and running.
+- The host computer must have docker and docker-compose installed and running.
 
 - Clone this repository:
 
@@ -70,7 +70,7 @@ git clone git@github.com:bengefferson/iRobot.git
 
 - cd to iRobot
 
-- Bring up docker-composer using the command:
+- Bring up docker-compose using the command:
 
 ```plain
 docker-compose up -d
@@ -92,11 +92,17 @@ docker-compose exec app composer -- dump
 
 ```plain
 docker-compose exec app php simulate.php name_of_file.txt
-The example file in this directory can be run with -> docker-compose exec app php simulate.php commands.txt
 ```
 
+- Read the src/2D/commands/_instructions.md file for instructions on how to setup a commands file
 
-- To run commands directly from the commandline, use the same command as above wothout parsing the file name as follows:
+- The example file in the src/2D/commands directory can be run with the command:
+
+```plain
+docker-compose exec app php simulate.php commands.txt
+```
+
+- To run commands directly from the commandline, use the same command as above without parsing the file name as follows:
 
 ```plain
 docker-compose exec app php simulate.php
